@@ -1,0 +1,68 @@
+{
+  "StartAt": "CheckInput",
+  "States": {
+    "CheckInput": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.foo",
+          "NumericEquals": 1,
+          "Next": "NumberIsOne"
+        },
+        {
+          "Variable": "$.bar",
+          "StringEquals": "MyString",
+          "Next": "StringIsMyString"
+        },
+        {
+          "Not": {
+            "Variable": "$.type",
+            "StringEquals": "Private"
+          },
+          "Next": "TypeIsPublic"
+        },
+        {
+          "And": [
+            {
+              "Variable": "$.value",
+              "NumericGreaterThanEquals": 20
+            },
+            {
+              "Variable": "$.value",
+              "NumericLessThan": 30
+            }
+          ],
+          "Next": "ValueInTwenties"
+        }
+      ],
+      "Default": "NoMatchFail"
+    },
+    "NumberIsOne": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:NumberIsOneHandler",
+      "Next": "Done"
+    },
+    "StringIsMyString": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:StringIsMyStringHandler",
+      "Next": "Done"
+    },
+    "TypeIsPublic": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:PublicTypeHandler",
+      "Next": "Done"
+    },
+    "ValueInTwenties": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:TwentiesHandler",
+      "Next": "Done"
+    },
+    "NoMatchFail": {
+      "Type": "Fail",
+      "Cause": "Input did not match any conditions."
+    },
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}
