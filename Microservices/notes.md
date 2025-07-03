@@ -53,3 +53,11 @@ You can find an example [here](examples/parallel-state-example.json) and its dia
 
 - Each state must defines either `End (true)` or `Next` state.
 - A state machine finishes when it reaches an `End` state - this terminates the entire execution.
+
+## Input and Output
+
+- Each execution starts with input JSON, passed to the first state.
+- Each state receives JSON, processed it and output JSON to the next state.
+- The final state's output is the state machine's result.
+- `InputPath, OutputPath and ResultPath` use path to manipulate JSON.
+- `ResultPath` use reference path - it can identify a single node in JSON.
