@@ -17,7 +17,6 @@ See the JSON file here :  [Choice state example](examples/choice-state-example.j
 How it works:
 
 1. Starts at`CheckInput`
-
 2. Checks:
 
 - `$.foo` equals 1 -> run `NumberIsOne`
@@ -27,3 +26,18 @@ How it works:
 - otherwise -> `NoMatchFail`
 
 List of support operators: [ `And`, `Or`, `BooleanEquals`, `Not`, `NumericEqual`, `NumericGreaterThan`, `NumericGreaterThanEquals`, `NumericLessThan`, `NumericLessThanEquals`, `StringEquals`, `StringGreaterThan`, `StringGreaterThanEquals`, `StringLessThan`, `StringLessThanEquals`, `TimestampEquals`, `TimestampEquals`, `TimestampGreatherThan`, `TimestampGreatherThanEquals`, `TimestampLessThan`, `TimestampLessThanEquals` ]
+
+## Parallel State
+
+The Parallel state allows you to run multiple branches of work at the smame time, which is useful when tasks don't depends on each other and can run faster in parellal.
+
+**Key points**
+
+- `Type: "parellal"` executes branches concurently.
+- Each branch is its own mini state machine (`States + StartAt`).
+- A Parellal state waits for all branches to finish before moving on.
+- Output is an array - one result for each branch.
+- There are additional fields that may be use -> `ResultPath, Retry, Catch`.
+- Branches cannot jump outside their branch (no `Next`to outside state).
+
+You can find an example [here](examples/parallel-state-example.json) and its diagram [here](diagrams/parallel-state.svg)
