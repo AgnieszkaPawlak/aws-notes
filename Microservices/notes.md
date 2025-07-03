@@ -40,4 +40,11 @@ The Parallel state allows you to run multiple branches of work at the smame time
 - There are additional fields that may be use -> `ResultPath, Retry, Catch`.
 - Branches cannot jump outside their branch (no `Next`to outside state).
 
-You can find an example [here](examples/parallel-state-example.json) and its diagram [here](diagrams/parallel-state.svg)
+You can find an example [here](examples/parallel-state-example.json) and its diagram [here](diagrams/parallel-state.svg).
+
+## Error Handling
+
+- If one branch fails, then whole Parellal state fails.
+- Other branchech stop, but the Lambda function keep running - it can't be cancelled.
+- For long-running activities use heartbeats to detect failure and stop workers safetely.
+- Use a Wait state to cleanup work if needed.
