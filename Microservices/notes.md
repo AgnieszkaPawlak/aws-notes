@@ -48,3 +48,8 @@ You can find an example [here](examples/parallel-state-example.json) and its dia
 - Other branchech stop, but the Lambda function keep running - it can't be cancelled.
 - For long-running activities use heartbeats to detect failure and stop workers safetely.
 - Use a Wait state to cleanup work if needed.
+
+## End State
+
+- Each state must defines either `End (true)` or `Next` state.
+- A state machine finishes when it reaches an `End` state - this terminates the entire execution.
