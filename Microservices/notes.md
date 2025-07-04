@@ -61,3 +61,22 @@ You can find an example [here](examples/parallel-state-example.json) and its dia
 - The final state's output is the state machine's result.
 - `InputPath, OutputPath and ResultPath` use path to manipulate JSON.
 - `ResultPath` use reference path - it can identify a single node in JSON.
+
+You can find an example of input and output processing [here](diagrams/input-output-processing.svg).
+
+**Paths**
+
+- Starts with `$` and use JsonPath syntax to select parts of JSON data.
+- Can select multiple nodes.
+
+**Reference Paths**
+
+- A strict version of path - always select only one node in the JSON.
+- Use dot `.` and square brackets `[]`.
+- Not support for operators like ` @, .., :, ?, *` or functions like `length()`.
+
+**Fields Using Paths**
+
+1. Input Path
+2. ResultPath
+3. OutputPath
