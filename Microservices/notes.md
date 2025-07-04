@@ -80,3 +80,10 @@ You can find an example of input and output processing [here](diagrams/input-out
 1. Input Path
 2. ResultPath
 3. OutputPath
+
+## Use Case
+
+- Step Functions manage stateful workflow.
+- Compute (Lambda, EC2) stay stateless.
+- Step Function tracks execution state, run tasks in order, handles retries and errors.
+- Example: processing a book order - > chage card -> create tracking number -> notify warehouse -> email customer.
