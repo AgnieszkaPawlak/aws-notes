@@ -1,0 +1,12 @@
+version: 0.1
+Resources:
+  -myLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Name: "mtExampleFunction"
+      Alias: "prod"
+      CurrentVersion: 1
+      TargetVersion: 2
+Hooks:
+  BeforeAllowTraffic: "Some_pre_deploy_function"
+  AfterAllowTraffic: "Some_post_deployFunction"
