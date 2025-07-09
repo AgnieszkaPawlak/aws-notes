@@ -47,16 +47,36 @@ Node.js, Phyton, Java, C#, PowerShell, Go, Ruby.
 4. CloudFormation (`AWS:Lambda:Function`)
 5. AWS SAM: simplifies serverless stacks
 
+You can find an example of the lambda flow [here](diagrams/lambda-flow.svg).
+
 ## Invocation Models
 
 
 | Model               | Description              | Example            |
 | ------------------- | ------------------------ | ------------------ |
 | Synchronous         | Wait for response        | API Gateway        |
-| Asynchronous (Push) | Fire and forget, retries | S3 event           |
+| Asynchronous (Push) | Fire and forget, retries | S3 event          |
 | Asynchronous (Pull) | Lambda polls source      | Kinesies, DynamoDB |
 
+You can see:
 
+- **The Amazon S3 push model example [here](diagrams/push-model.svg).**
+
+How it works:
+
+1. User creates an object in a buket.
+2. S3 detects the `object created` event.
+3. S3 invokes the Lambda function according to the event source mapping in the bucket configuration.
+4. AWS verifies if Lambda has Execution Role and Access Policy.
+5. AWS executes the Lambda, passing in the event as parameter.
+
+- **The sequence for a pull mpdel [here](diagrams/pull-model.svg).**
+
+How it works:
+
+1. An application writes records to an Amazon Kinesis stream.
+2. Lambda continuusly pools the stream or streams specified in your event source mapping confuguration. Lambda invocates your funcyion when new records on the stream has been detected.
+3. After veryfying Kinesies has permisssion, Lambda executes the function.
 
 ## Performance
 
@@ -71,7 +91,6 @@ Use Docker images for large or custom runtimes (up to 10 GB)
 
 
 ## Concurrency and Throttling
-
 
 There are account-level concurrency limits.
 
