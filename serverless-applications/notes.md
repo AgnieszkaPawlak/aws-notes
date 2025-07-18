@@ -165,6 +165,9 @@ System Overview:
   - CloudFront + Route 53 for distribution
 - Benefits: no server maintenance, scalable, cost-effective
 
+You can see serverless web application architecture [here](diagrams/serverless-web-application-architecture.svg).
+
+
 ## Amazon Aurora Serverless
 
 - On-demand autoscaling RDS (PostgresSQL/MySQL-compatible)
@@ -213,3 +216,4 @@ System Overview:
 
 - Network control via VPC, Security Groups, NACLs
 - IAM policies for configuration access
+
