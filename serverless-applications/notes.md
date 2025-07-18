@@ -73,7 +73,7 @@ aws cloudfront create-invalidation \
 ### Authorization Options
 
 - **IAM** - uses SigV4 headers
-- **Lambda Authorizer** - full control (JWT parsing, 3rd party IdPs)
+- **Lambda Authorizer** - full control (JWT parsing, 3rd party IdPs) You can see an example [here](diagrams/jwt-validation-via-api-gateway-auth.svg).
 - **Cognito Authorizer**  - native JWT-based
 - **Resources Policies** - restrict by IP, VPC, account
 
@@ -97,5 +97,4 @@ aws cloudfront create-invalidation \
   arn:aws:lambda:us-east-1:123456789012:function:my-func:${stageVariables.version}
   ```
 - Canary: Gradual rollout of new config/function (5-10% traffic)
-
 
