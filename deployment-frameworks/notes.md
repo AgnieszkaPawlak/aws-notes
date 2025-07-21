@@ -22,3 +22,11 @@ Constructs:
 - Simplified deployment: `sam build, sam deploy`
 
 You can see an example [here](examples/sam-template.yaml).
+
+
+## Amplify
+
+- Full-stack tool: hosting + backend infrastructure
+- Declarative `TypeScript` syntax to define data and auth
+- Real-time deployment via github push
+- Auto generates GraphQL + Cognito + S3 _APIs
