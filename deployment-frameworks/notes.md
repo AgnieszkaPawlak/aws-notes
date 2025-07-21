@@ -14,3 +14,11 @@ Constructs:
 - Level 1 - Low-level, named cfn*
 - Level 2 - Curated, high abstraction, with helper methoda
 - Level 3 - Patterns (e.g. full ECS task wuth scheduling)
+
+## Serverless Application Model (SAM)
+
+- Extension of CloudFormation with simplified syntax
+- Define Lambda, API Gateway, ect. using `AWS:Serverless::Function`
+- Simplified deployment: `sam build, sam deploy`
+
+You can see an example [here](examples/sam-template.yaml).
