@@ -30,3 +30,5 @@ You can see an example [here](examples/sam-template.yaml).
 - Declarative `TypeScript` syntax to define data and auth
 - Real-time deployment via github push
 - Auto generates GraphQL + Cognito + S3 _APIs
+
+You can see the Amplify architecture [here](diagrams/amplify-architecture.svg).
